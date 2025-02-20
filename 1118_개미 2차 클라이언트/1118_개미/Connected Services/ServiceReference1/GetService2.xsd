@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/_1111_MemberSerivce.User" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/_1111_MemberSerivce.User" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfTradeRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TradeRecord" nillable="true" type="tns:TradeRecord" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTradeRecord" nillable="true" type="tns:ArrayOfTradeRecord" />
+  <xs:complexType name="TradeRecord">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuyPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BuyTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Market" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TradeRecord" nillable="true" type="tns:TradeRecord" />
+  <xs:complexType name="UpbitTicker">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="change_price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="change_rate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="trade_price" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpbitTicker" nillable="true" type="tns:UpbitTicker" />
+  <xs:complexType name="ArrayOfUpbitCandle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UpbitCandle" nillable="true" type="tns:UpbitCandle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUpbitCandle" nillable="true" type="tns:ArrayOfUpbitCandle" />
+  <xs:complexType name="UpbitCandle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="candle_date_time_kst" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="high_price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="low_price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="opening_price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="trade_price" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpbitCandle" nillable="true" type="tns:UpbitCandle" />
+</xs:schema>

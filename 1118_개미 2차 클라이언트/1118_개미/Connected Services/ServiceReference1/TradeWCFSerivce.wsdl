@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="TradeWCFSerivce" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_ITradeService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://220.90.180.87:9000/GetService?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://220.90.180.87:9000/GetService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://220.90.180.87:9000/GetService?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://220.90.180.87:9000/GetService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/_1111_MemberSerivce.User" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITradeService_Buy_InputMessage">
+    <wsdl:part name="parameters" element="tns:Buy" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_Buy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_Sell_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sell" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_Sell_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SellResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetTotalAssets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalAssets" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetTotalAssets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalAssetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetAvailableQuantity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableQuantity" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetAvailableQuantity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableQuantityResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetMarketNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketNames" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetMarketNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetMarketByIndex_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketByIndex" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetMarketByIndex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketByIndexResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetMarketName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketName" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetMarketName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetTradeRecords_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeRecords" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetTradeRecords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetCurrentPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentPrice" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetCurrentPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetCandles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCandles" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_GetCandles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCandlesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_TradeInfosCallback_InputMessage">
+    <wsdl:part name="parameters" element="tns:TradeInfosCallback" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_UpdateTradeInfo_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTradeInfo" />
+  </wsdl:message>
+  <wsdl:message name="ITradeService_NotifyError_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyError" />
+  </wsdl:message>
+  <wsdl:portType name="ITradeService">
+    <wsdl:operation name="Buy">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/Buy" message="tns:ITradeService_Buy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/BuyResponse" message="tns:ITradeService_Buy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sell">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/Sell" message="tns:ITradeService_Sell_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/SellResponse" message="tns:ITradeService_Sell_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetBalance" message="tns:ITradeService_GetBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetBalanceResponse" message="tns:ITradeService_GetBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalAssets">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetTotalAssets" message="tns:ITradeService_GetTotalAssets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetTotalAssetsResponse" message="tns:ITradeService_GetTotalAssets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableQuantity">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetAvailableQuantity" message="tns:ITradeService_GetAvailableQuantity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetAvailableQuantityResponse" message="tns:ITradeService_GetAvailableQuantity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetMarketNames" message="tns:ITradeService_GetMarketNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetMarketNamesResponse" message="tns:ITradeService_GetMarketNames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketByIndex">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetMarketByIndex" message="tns:ITradeService_GetMarketByIndex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetMarketByIndexResponse" message="tns:ITradeService_GetMarketByIndex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetMarketName" message="tns:ITradeService_GetMarketName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetMarketNameResponse" message="tns:ITradeService_GetMarketName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeRecords">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetTradeRecords" message="tns:ITradeService_GetTradeRecords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetTradeRecordsResponse" message="tns:ITradeService_GetTradeRecords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentPrice">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetCurrentPrice" message="tns:ITradeService_GetCurrentPrice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetCurrentPriceResponse" message="tns:ITradeService_GetCurrentPrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCandles">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/GetCandles" message="tns:ITradeService_GetCandles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/GetCandlesResponse" message="tns:ITradeService_GetCandles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TradeInfosCallback">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITradeService/TradeInfosCallback" message="tns:ITradeService_TradeInfosCallback_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTradeInfo">
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/UpdateTradeInfo" message="tns:ITradeService_UpdateTradeInfo_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyError">
+      <wsdl:output wsaw:Action="http://tempuri.org/ITradeService/NotifyError" message="tns:ITradeService_NotifyError_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_ITradeService" type="tns:ITradeService">
+    <wsp:PolicyReference URI="#NetTcpBinding_ITradeService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Buy">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/Buy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sell">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/Sell" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalAssets">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetTotalAssets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableQuantity">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetAvailableQuantity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketNames">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetMarketNames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketByIndex">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetMarketByIndex" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketName">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetMarketName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeRecords">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetTradeRecords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentPrice">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetCurrentPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCandles">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/GetCandles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TradeInfosCallback">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/TradeInfosCallback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTradeInfo">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/UpdateTradeInfo" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyError">
+      <soap12:operation soapAction="http://tempuri.org/ITradeService/NotifyError" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TradeWCFSerivce">
+    <wsdl:port name="NetTcpBinding_ITradeService" binding="tns:NetTcpBinding_ITradeService">
+      <soap12:address location="net.tcp://localhost:8000/Chating" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8000/Chating</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
